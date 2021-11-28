@@ -15,24 +15,42 @@ class Node
     end  
 end
 
-# make a modified tree which has 8 children for each node
-class Moves
-    attr_accessor :root, :ary
-      
-    def initialize(value)
-      x = value[0]
-      y = value[1]
-      @head = Node.new(value, [ x - 2, y - 1 ], [ x - 2, y + 1 ],
-                              [ x - 1, y - 2 ], [ x - 1, y + 2 ],
-                              [ x + 1, y - 2 ], [ x + 1, y + 2 ],
-                              [ x + 2, y - 1 ], [ x + 2, y + 1 ]
-                      )       
-    end
+# make a modified tree 'board' which has 8 children for each node
+class Tree
+  attr_accessor :root, :ary
+    
+  def initialize(ary)
+    @ary = ary
+    @root
+
+  end
+
+  def build_queue(x = ary[0], y = ary[1])
+    queue = Array.new
+
+    # move list
+    one = [x-1, y-2]
+    two = [x-2, y-1]
+    three = [x-1, y+2]
+    four = [x-2, y+1]
+    five = [x+1, y-2]
+    six = [x-2, y+1]
+    seven = [x+1, y+2]
+    eight = [x+2, y+1]
+
+    queue.push(one, two, three, four, five, six, seven, eight)
+
+  end
+
+  def build_tree
+    # build one level
+    
+    
+    
   end
   
-a = Moves.new([0,0])
-p a
 
-# add limits to the board
+
+end
 
 # write a method that does breadth traversal and counts the levels
