@@ -22,11 +22,14 @@ class Tree
   def initialize(ary)
     @ary = ary
     @root
+    @moves = Array.new
+    @moves.push(ary)
 
   end
 
-  def build_queue(x = ary[0], y = ary[1])
-    queue = Array.new
+  def build_queue(index = 0, current_move = @moves[index], x = current_move[0], y = current_move[1], level = 1)
+    
+    return @nil if level == 7
 
     # move list
     one = [x-1, y-2]
@@ -39,6 +42,8 @@ class Tree
     eight = [x+2, y+1]
 
     queue.push(one, two, three, four, five, six, seven, eight)
+
+    build_queue(index = 1, current_move = @moves[index], x = current_move[0], y = current_move[1], level + 1)
 
   end
 
